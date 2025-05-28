@@ -1,0 +1,12 @@
+services:
+  gateway:
+    image: gateway:latest
+    ports:
+      - "8081:8081"
+
+  auth-service:
+    image: auth-service:latest
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev

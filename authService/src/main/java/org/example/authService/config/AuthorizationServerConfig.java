@@ -17,6 +17,8 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
@@ -73,7 +75,7 @@ public class AuthorizationServerConfig {
                 .clientId("spa-client")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.NONE) // <- no secret
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .redirectUri("http://127.0.0.1:8888/callback")// <- your frontend
+                .redirectUri("http://127.0.0.1:5173/callback")// <- your frontend
                 .scope(OidcScopes.OPENID)
                 .scope("read_resource")
                 .clientSettings(ClientSettings.builder()
@@ -99,5 +101,11 @@ public class AuthorizationServerConfig {
     public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
         return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
     }
+
+    @Bean
+    public JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwkSource) {
+        return new NimbusJwtEncoder(jwkSource);
+    }
+
 }
 

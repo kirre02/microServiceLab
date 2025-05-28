@@ -14,8 +14,8 @@ public class CorsConfig {
     @Primary
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
-        config.addAllowedOrigin("http://localhost:8888");
-        config.addAllowedOrigin("http://localhost:9090");
+        config.addAllowedOrigin("http://localhost:5173");
+        config.addAllowedOrigin("http://localhost:8081");
         config.setAllowCredentials(true);
 
         var source = new UrlBasedCorsConfigurationSource();

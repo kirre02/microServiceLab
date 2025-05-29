@@ -16,3 +16,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8082:8082"
+
+  quote-service:
+    container_name: quote-service
+    build:
+      context: ./quoteService/
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"

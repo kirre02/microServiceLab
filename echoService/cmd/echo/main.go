@@ -31,6 +31,6 @@ func echoHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/echo", echoHandler)
-	fmt.Println("Starting WhoAmI service on :8082...")
+	fmt.Println("Starting echo service on :8082...")
 	log.Fatal(http.ListenAndServe(":8082", nil))
 }

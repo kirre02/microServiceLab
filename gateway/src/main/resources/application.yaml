@@ -12,8 +12,8 @@ spring:
           filters:
             - RewritePath=/api/auth/(?<segment>.*), /${segment}
 
-        - id: example-service
-          uri: http://localhost:8082
+        - id: echo-service
+          uri: http://echo-service:8082
           predicates:
             - Path=/api/**
           filters:

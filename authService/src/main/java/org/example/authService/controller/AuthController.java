@@ -39,7 +39,7 @@ public class AuthController {
 
             Instant now = Instant.now();
             JwtClaimsSet claims = JwtClaimsSet.builder()
-                    .issuer("self")
+                    .issuer("http://auth-service:9090")
                     .issuedAt(now)
                     .expiresAt(now.plus(1, ChronoUnit.HOURS))
                     .subject(username)
